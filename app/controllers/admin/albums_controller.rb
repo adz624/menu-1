@@ -1,7 +1,6 @@
-class Admin::AlbumsController < ApplicationController
-	before_action  :login_required,  :only  =>  [:new, :create, :show, :index, :edit, :update,:destroy]
+class Admin::AlbumsController < Admin::BaseController
 	def index
-		@albums = Album.all
+		@albums = Album.all.page(params[:page])
 	end
 
 	def new
@@ -42,8 +41,26 @@ class Admin::AlbumsController < ApplicationController
 		@photos = @album.photos
 	end
 
+	# DELETE /admin/albums/multi
+	def multi_delete
+		if album_deletion_params.empty?
+			redirect_to :back, notice: '請選擇至少一筆 album'
+		end
+
+		Album.delete_all(id: album_deletion_params)
+		redirect_to :back, notice: "已刪除 #{album_deletion_params.count} 筆資料。"
+	end
+
 	private
 	def params_album
 		params.require(:album).permit(:city, :name)
+	end
+
+	def album_deletion_params
+		if params[:album_ids].blank?
+			[]
+		else
+			params[:album_ids]
+		end
 	end
 end

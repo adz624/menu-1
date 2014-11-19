@@ -2,8 +2,8 @@ default: &default
   timeout: 5000
   encoding: utf8
   host: localhost
-  username: op_user
-  password: "njP4UKt98wvhQLmL"
+  username: root
+  password: ""
 
 development:
   <<: *default
