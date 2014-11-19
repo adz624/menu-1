@@ -1,0 +1,19 @@
+<!-- 置中區塊 -->
+<div id="page-container">
+	<!-- 上方-選擇項目 -->
+	<div id="content-top-choose">			
+	</div>
+	<div id="usermenu-content">
+		<div class="row">
+			<!-- 使用者菜單 -->
+			<div class="span3 usermenu-block">
+			<%= form_for [@opinion, @opcomment] do |n| %>
+				內容<%= n.text_area :content %>
+					<%= n.hidden_field  :user_name, :value => current_user.name %>
+				<%= n.submit '送出' %>
+				<%= link_to('返回', opinion_path(@opinion)) %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div><!-- 使用者菜單 結束 -->

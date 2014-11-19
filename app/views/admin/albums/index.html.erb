@@ -1,0 +1,6 @@
+<% @albums.each do |i| %>
+	菜單本:<%= link_to(i.name, admin_album_path(i)) %>
+	<%= link_to('編輯', edit_admin_album_path(i)) %>
+	<%= link_to('刪除', admin_album_path(i), :method => 'delete') %><p>
+<% end %>
+<%= link_to('新增菜單本', new_admin_album_path) %> 

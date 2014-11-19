@@ -1,0 +1,60 @@
+<!-- 內容-菜單 -->
+		<div id="lottery-menu-content">
+			<% @photos.each do |r| %>
+			<div class="row-fluid">
+				<!-- 菜單-1 -->
+				<div class="span4 lottery-menu menu-mask">
+					<!-- 菜單圖片連結 -->
+					<a class="lottery-menu-pic" data-toggle="modal" href="#<%= r.id %>" >
+					<%= image_tag r.image_url(:thumb).to_s %>
+					</a>
+					<!-- 彈出菜單 -->
+					<div id="<%= r.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <a class="close" data-dismiss="modal">×</a>
+					    <!-- 收藏 -->
+					    <h2><%= r.name %></h2>
+					    <span><%= r.city %></span>
+					  </div>
+					  <div class="modal-body">
+					    <%= image_tag r.image_url(:thumb).to_s %>
+					  </div>
+					  <div class="modal-footer">
+					    <a class="float-r heart" href="">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+					    <a class="float-r facebook" href="">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+					    <a class="float-r twitter" href="">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+					  	<!-- <button class="btn" data-dismiss="modal" aria-hidden="true">關閉</button> -->
+					  </div>
+					</div>
+
+
+					<!-- 滑入區塊 -->
+					<div class="collect-slide">
+						<!-- 滑入-收藏 -->
+						<a href="">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+				<% end %>			
+			</div><!-- row End -->			
+		</div><!-- 內容-菜單 End -->
+

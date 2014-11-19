@@ -1,0 +1,8 @@
+<% @photos.each do |s| %>
+	<%= s.name %>
+	<%= image_tag s.image_url(:thumb).to_s %>
+	<%= link_to('編輯', edit_admin_photo_path(s)) %>
+	<%= link_to('刪除', admin_photo_path(s), :method => 'delete') %><p>
+<% end %>
+<%= link_to('上傳菜單', new_admin_photo_path()) %>
+<%= link_to('返回', admin_albums_url) %>

@@ -1,0 +1,47 @@
+	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("#usermenu-upload-fixed a").toggle(   //點擊上傳菜單
+	  	function(){ 
+	    $(".upload-menu-form").fadeIn()}, //點第一下上傳區塊淡出顯示
+	    function(){
+	    $(".upload-menu-form").fadeOut()} //點第二下上傳區塊淡出隱藏
+	  );
+	});
+	</script>
+<!-- 上傳菜單 -->
+	<div id="usermenu-upload-fixed">
+		<a href="">建立菜單本</a>
+		<%= form_for @album do |n| %>
+		<!-- 上傳表單 -->
+		<div class="upload-menu-form">
+			    <!-- <legend>上傳菜單</legend> -->
+			    <div class="control-group">
+				    <label class="control-label" for="">菜單本名稱</label>
+				    <div class="controls">
+				      <%= n.text_field :name %>
+				    </div>
+				</div>			   
+				<%= n.submit '送出' %>
+		</div>
+		<% end %>
+	</div>
+
+	<!-- 置中區塊 -->
+	<div id="page-container">
+		<!-- 上方-選擇項目 -->
+		<div id="content-top-choose">
+			<a href="" class="btn btn-primary">我的菜單本</a>
+		</div>
+		<div id="usermenu-content">
+			<div class="row">
+				<!-- 使用者菜單 -->
+				<div class="span3 usermenu-block">
+				<% @albums.each do |a| %>
+					<%= link_to(a.name, album_path(a)) %></br>
+					<%= link_to('編輯', edit_album_path(a)) %>
+					<%= link_to('刪除', album_path(a), :method => 'delete') %></br>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div><!-- 使用者菜單 結束 -->

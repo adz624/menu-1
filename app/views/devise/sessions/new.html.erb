@@ -1,0 +1,29 @@
+	<!-- 登入區塊 -->
+	<div id="login-container">
+		<div class="row">
+			<div class="span5" id="login-content">
+					<div class="login-header">
+						<h2>LOGIN</h2>
+					</div>
+					<%= form_for(:user, :url => session_path(:user)) do |f| %>
+					<div class="control-group">
+					    <label class="control-label" for="inputEmail">Email</label>
+					    <div class="controls">
+					      <%= f.text_field :email, required: true, autofocus: true, :id => 'inputEmail', :class => 'span5', :placeholder => 'Email' %>
+					    </div>
+					</div>
+					<div class="control-group">
+					    <label class="control-label" for="inputPassword">密碼</label>
+					    <div class="controls">
+					      <%= f.password_field :password, required: true, :id => 'inputPassword', :class => 'span5', :placeholder => '密碼' %>
+					    </div>
+					</div>
+					<label class="checkbox span1 login-remeber">
+						<%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %> 記住我
+					</label>
+					<%= f.submit '登入', :class => 'btn btn-danger float-r'%>
+				<%= render "devise/shared/links" %>
+			</div>
+			<% end %>
+		</div>
+	</div>

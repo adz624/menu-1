@@ -1,0 +1,52 @@
+<!-- 回饋區塊 -->
+	<div id="feedback-container">
+		<div class="row-fluid">
+			<!-- 回饋內容區塊 -->
+			<div class="span12">
+				<!-- 標題 -->
+				<div id="feedback-header">
+					<h2>意見回饋</h2>
+				</div>
+				<div id="feedback-content" class="feedback-content">
+					<%= link_to('返回列表', opinions_url, :class => "btn btn-back") %>
+					<div id="feedback-title">
+						<%= @opinion.title %>
+					</div>
+					<div id="feedback-test">
+						<%= @opinion.content %>
+					</div>
+					<div id="feedback-message-block">
+						<h3>留言</h3>						
+						<ul class="feedback-message">
+						<% @opcomments.each do |o| %>
+							<li>
+							<div class="post">
+								<div class="post-pic">
+									<img src="../assets/user.jpg" title = "<%= o.user_name %>">
+								</div>
+								<div class="post-text">
+										說:<%= o.content %>								
+								</div>
+								<% end %>
+								<%= paginate @opcomments, :theme=>'testmode' %>
+							</div>
+							</li>
+							
+							<%= form_for [@opinion, @opcomment] do |n| %>
+							<li>							
+								<div class="control-group">
+								    <label class="control-label" for="inputshopadd">我要留言</label>
+								    <div class="controls">
+								    <%= n.hidden_field  :user_name, :value => current_user.name %>
+								    <%= n.text_area :content, :class => "span4", :rows => "2", :placeholder => "說點什麼..." %>
+								    </div>
+										<%= n.submit '送出', :class => "btn btn-small float-r" %>								    
+								</div>								
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div> <!-- 回饋內容區塊 End -->
+		</div> <!-- row-fluid End -->
+	</div> <!-- 回饋區塊 End -->

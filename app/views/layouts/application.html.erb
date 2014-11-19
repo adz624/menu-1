@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'common/header' %>
+<% if notice %>
+	<div>
+  <p class="alert alert-success" id ="content-top-text"><%= notice %></p>
+  </div>
+<% end %>
+<% if alert %>
+	<div>
+  <p class="alert alert-danger" id ="content-top-text"><%= alert %></p>
+  </div>
+<% end %>
+<%= yield %>
+<%= render 'common/footer' %>
+</body>
+</html>

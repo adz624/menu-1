@@ -1,0 +1,22 @@
+<div id="page-container">
+		<!-- 上方-選擇項目 -->
+		<div id="content-top-choose">
+			<a href="" class="btn btn-primary">我的菜單本</a>
+		</div>
+		<div id="usermenu-content">
+			<div class="row">
+				<!-- 使用者菜單 -->
+				<div class="span3 usermenu-block">
+					<%= session[:aid] %>
+					<%= form_for :albumsphoto do |f| %>
+						店家名稱:<%= f.text_field :name %></br>
+						縣/市:<%= f.text_field :city %></br>
+						區域:<%= f.text_field :zone %></br>
+						圖片:<%= f.file_field :image %></br>
+						<%= f.submit '送出' %>
+						<%= link_to('返回', album_path(session[:aid])) %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div><!-- 使用者菜單 結束 -->

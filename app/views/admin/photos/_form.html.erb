@@ -1,0 +1,9 @@
+<% session[:aid] %>
+<%= form_for [:admin, @photo] do |f| %>
+	店家名稱:<%= f.text_field :name %></br>
+	縣/市:<%= f.text_field :city %></br>
+	區域:<%= f.text_field :zone %></br>
+	圖片:<%= f.file_field :image %></br>
+	<%= f.submit '送出' %>
+	<%= link_to('返回', admin_album_path(session[:aid])) %>
+<% end %>

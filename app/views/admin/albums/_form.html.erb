@@ -1,0 +1,4 @@
+<%= form_for [:admin, @album] do |f| %>
+	菜單本名稱:<%= f.text_field :name %>
+	<%= f.submit '送出' %>
+<% end %>

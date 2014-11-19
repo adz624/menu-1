@@ -1,0 +1,18 @@
+<div id="page-container">
+		<!-- 上方-選擇項目 -->
+		<div id="content-top-choose">
+			<a href="" class="btn btn-primary">我的菜單本</a>
+		</div>
+		<div id="usermenu-content">
+			<div class="row">
+				<!-- 使用者菜單 -->
+				<div class="span3 usermenu-block">
+					<%= form_for @album do |e| %>
+						菜單本名稱:<%= e.text_field :name %>
+						<%= e.submit '送出' %>
+						<%= link_to('返回', albums_url) %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div><!-- 使用者菜單 結束 -->

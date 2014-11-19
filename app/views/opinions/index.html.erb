@@ -1,0 +1,22 @@
+<!-- 回饋區塊 -->
+	<div id="feedback-container">
+		<div class="row-fluid">
+			<!-- 回饋內容區塊 -->
+			<div class="span12">
+				<!-- 標題 -->
+				<div id="feedback-header">
+					<h2>意見回饋</h2>
+				</div>
+				<div id="feedback-content" class="feedback-choose">
+					<%= link_to('給予意見', new_opinion_path, :class => "btn btn-back") %>
+					<ul>
+						<% @opinions.each do |a| %>
+							<li><%= link_to(a.title, opinion_path(a)) %></li>
+						<% end %>
+						<%= paginate @opinions, :theme=>'testmode' %>					
+					</ul>					
+					<%= link_to('返回首頁', photos_url) %>
+				</div>
+			</div> <!-- 回饋內容區塊 End -->
+		</div> <!-- row-fluid End -->
+	</div> <!-- 回饋區塊 End -->

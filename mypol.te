@@ -1,0 +1,15 @@
+
+module mypol 1.0;
+
+require {
+	type anon_inodefs_t;
+	type httpd_t;
+	class process execmem;
+	class file write;
+}
+
+#============= httpd_t ==============
+allow httpd_t anon_inodefs_t:file write;
+
+#!!!! This avc can be allowed using the boolean 'httpd_execmem'
+allow httpd_t self:process execmem;

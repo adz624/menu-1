@@ -1,0 +1,22 @@
+
+<div id="page-container">
+		<!-- 上方-選擇項目 -->
+		<div id="content-top-choose">
+			<a href="" class="btn btn-primary">我的菜單本</a>
+		</div>
+		<div id="usermenu-content">
+			<div class="row">
+				<!-- 使用者菜單 -->
+				<div class="span3 usermenu-block">
+					<% @albumphotos.each do |s| %>
+						<%= s.name %>
+						<%= image_tag s.image_url(:thumb).to_s %>
+						<%= link_to('編輯', edit_albumphoto_path(s)) %>
+						<%= link_to('刪除', albumphoto_path(s), :method => 'delete') %><p>
+					<% end %>
+					<%= link_to('上傳菜單', new_albumphoto_path()) %>
+					<%= link_to('返回', albums_url) %>
+				</div>
+			</div>
+		</div>
+	</div><!-- 使用者菜單 結束 -->

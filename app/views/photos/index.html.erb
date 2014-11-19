@@ -1,0 +1,74 @@
+	<script type="text/javascript">
+	$(document).ready(function(){
+	  $(".upload-menu a").toggle(   //點擊上傳菜單
+	  	function(){ 
+	    $(".upload-menu-form").fadeIn()}, //點第一下上傳區塊淡出顯示
+	    function(){
+	    $(".upload-menu-form").fadeOut()} //點第二下上傳區塊淡出隱藏
+	  );
+	});
+	</script>
+<!-- 上傳菜單-固定 -->
+	<div class="upload-menu">
+		好吃鬥相報!</br>
+		推薦您的美食菜單給我們!!</br>
+		<a href="" class="btn btn-success">
+			推薦菜單
+		</a>
+		<!-- 上傳表單 -->
+		<div class="upload-menu-form">
+		<%= form_for @photo do |n| %>
+			    <!-- <legend>上傳菜單</legend> -->
+			    <div class="control-group">
+				    <label class="control-label" for="">店家名稱</label>
+				    <div class="controls">
+				      <%= n.text_field :name, required: true %>
+				    </div>
+				</div>
+			    <div class="control-group">
+				    <label class="control-label" for="">店家地址</label>
+				    <div class="controls">
+				      <%= n.text_field :city, :class => 'span1', :placeholder => '縣/市' , required: true %>
+				      <%= n.text_field :zone, :class => 'span1', :placeholder => '區' , required: true %>
+				      <input type="text" id="" class="upload-menu-input-add" placeholder=" ">
+				    </div>
+				</div>
+			    <div class="upload-picture">
+				    圖片<%= n.file_field :image , required: true %>
+				</div>
+				<div class="control-group">
+				    <label class="control-label" for="inputshopadd">描述</label>
+				    <div class="controls">
+				      <textarea rows="2" placeholder="說點什麼..."></textarea>
+				    </div>
+				</div>
+				<%= n.submit '送出' %>
+			<% end %>
+		</div>
+	</div>
+	</div>
+	<!-- 廣告-固定 -->
+	<div class="ad-fixed-left">
+		<img src="../assets/ad.jpg">
+	</div>
+	<!-- 置中區塊 -->
+	<div id="page-container">
+		<!-- 上方內容-文字 -->
+		<div id="content-top-text">
+			Hi!吃飯時間到囉!!<br/>
+			還想不到要吃什麼嗎?
+			<h2>讓我們為您推薦美味的菜色吧!</h2>
+		</div>
+		<!-- 上方內容-搜尋列 -->
+		<div id="content-top-search">
+			<form action="http://choise.0cafe.tw/?r=">
+				<%= select_tag "r", "<option>高雄市</option><option>台南市</option><option>台北市</option>".html_safe %>
+				<button type="submit" class="btn btn-danger">推薦菜單</button>
+			</form>
+		</div>
+		<%=
+			if params[:r].present?
+				render 'rdm'
+			end
+		%>
+	</div><!-- 置中區塊 End -->
